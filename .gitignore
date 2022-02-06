@@ -1,0 +1,9 @@
+# Python environments
+.venv
+.env
+venv
+env
+
+# Python internal files
+__pycache__
+
