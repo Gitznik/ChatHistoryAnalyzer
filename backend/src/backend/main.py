@@ -10,4 +10,5 @@ app = FastAPI()
 async def root():
     return {"message": "The API is up and running!"}
 
+
 app.include_router(chatlog.router, prefix="/chatlog")
