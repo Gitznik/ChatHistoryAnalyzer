@@ -5,10 +5,8 @@ from backend.routes import chatlog
 
 app = FastAPI()
 
+app.include_router(chatlog.router)
 
 @app.get("/")
-async def root():
+def root():
     return {"message": "The API is up and running!"}
-
-
-app.include_router(chatlog.router, prefix="/chatlog")
