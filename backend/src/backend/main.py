@@ -7,6 +7,7 @@ app = FastAPI()
 
 app.include_router(chatlog.router)
 
+
 @app.get("/")
 def root():
     return {"message": "The API is up and running!"}
