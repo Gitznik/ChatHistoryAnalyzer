@@ -7,6 +7,8 @@ license = "GPLv3"
 
 [tool.poetry.dependencies]
 python = "^3.9"
+pymongo = "^4.0.1"
+python-dotenv = "^0.19.2"
 
 [tool.poetry.dev-dependencies]
 fastapi = {extras = ["all"], version = "^0.73.0"}
