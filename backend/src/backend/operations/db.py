@@ -45,6 +45,6 @@ class MongoDBConnection(DatabaseConnection):
 
     def retrieve_one(self, schema: str, table: str, data: Dict[str, Any]):
         return self._connect_to_db(schema)[table].find_one(data)
-    
+
     def _connect_to_db(self, schema: str):
         return self.establish_connection()[schema]
