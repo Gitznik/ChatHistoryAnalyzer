@@ -10,4 +10,10 @@
             "source.organizeImports": true
         },   
     },
+    "[MagicPython]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },   
+    },
 }
