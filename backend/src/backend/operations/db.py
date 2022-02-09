@@ -33,8 +33,9 @@ class MongoDBConnection(DatabaseConnection):
     project: str = os.environ["MONGODB_PROJECT"]
 
     def establish_connection(self):
+        secrets = f"{self.user}:{self.pw}@{self.target}/{self.project}"
         return pymongo.MongoClient(
-            f"mongodb+srv://{self.user}:{self.pw}@{self.target}/{self.project}?retryWrites=true&w=majority"
+            f"mongodb+srv://{secrets}?retryWrites=true&w=majority"
         )
 
     def test_connection(self):
