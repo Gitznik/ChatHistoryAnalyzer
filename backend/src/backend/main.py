@@ -5,7 +5,7 @@ from backend.routes import chatlog
 
 app = FastAPI()
 
-app.include_router(chatlog.router)
+app.include_router(chatlog.router, prefix="/chatlog")
 
 
 @app.get("/")
