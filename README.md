@@ -2,7 +2,7 @@
 
 Learning project for a tool that analyzes a chat history and provides some metrics about it.
 
-Uses a REACT frontend to aquire the chat history and a flask backend to conduct the analysis.
+Uses a REACT frontend to aquire the chat history and a [FastAPI](https://fastapi.tiangolo.com) to conduct the analysis.
 
 Currently WIP, will start with the WhatsApp iOS chat history and add more sources later on.
 
