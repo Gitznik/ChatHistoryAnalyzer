@@ -5,6 +5,7 @@ from typing import Any, Dict
 import pymongo
 from bson.objectid import ObjectId
 from dotenv import load_dotenv
+from fastapi import Response, status
 
 load_dotenv()
 
@@ -60,3 +61,15 @@ class MongoDBConnection(DatabaseConnection):
 
     def _connect_to_db(self, schema: str):
         return self.establish_connection()[schema]
+
+
+def create_db_conn() -> DatabaseConnection:
+    return MongoDBConnection()
+
+
+def get_chatlog(db_conn, id: str, response: Response):
+    try:
+        return db_conn.retrieve_one("Messages", "SubmittedMessage", id)
+    except ObjectNotFoundError as e:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return {"error": str(e)}
