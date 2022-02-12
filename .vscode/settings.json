@@ -3,7 +3,6 @@
     "python.linting.enabled": true,
     "python.analysis.typeCheckingMode": "basic",
     "python.formatting.provider": "black",
-    "editor.formatOnSave": false,
     "[python]": {
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
@@ -16,4 +15,5 @@
             "source.organizeImports": true
         },   
     },
+    "editor.formatOnSave": true,
 }
