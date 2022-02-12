@@ -13,5 +13,5 @@ def save_chatlog(message: Message):
 
 
 @router.get("/")
-def get_chatlog(user: str):
-    return DB_CONN.retrieve_one("Messages", "SubmittedMessage", {"user": user})
+def get_chatlog(id: str):
+    return DB_CONN.retrieve_one("Messages", "SubmittedMessage", id)

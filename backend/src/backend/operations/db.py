@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict
 
 import pymongo
+from bson.objectid import ObjectId
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -44,8 +45,12 @@ class MongoDBConnection(DatabaseConnection):
     def insert_one(self, schema: str, table: str, data: Dict[str, Any]):
         return self._connect_to_db(schema)[table].insert_one(data)
 
-    def retrieve_one(self, schema: str, table: str, data: Dict[str, Any]):
-        return self._connect_to_db(schema)[table].find_one(data)
+    def retrieve_one(self, schema: str, table: str, id: str) -> Dict[str, Any]:
+        retrieved_object = self._connect_to_db(schema)[table].find_one(
+            {"_id": ObjectId(id)}
+        )
+        retrieved_object["_id"] = str(retrieved_object.get("_id"))
+        return retrieved_object
 
     def _connect_to_db(self, schema: str):
         return self.establish_connection()[schema]
