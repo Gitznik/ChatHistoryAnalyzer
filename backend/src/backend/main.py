@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 
-from backend.operations.message import Message
-from backend.routes import chatlog
+from backend.routes import analysis, chatlog
 
 app = FastAPI()
 
 app.include_router(chatlog.router, prefix="/chatlog")
+app.include_router(analysis.router, prefix="/analysis")
 
 
 @app.get("/")
