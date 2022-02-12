@@ -12,6 +12,7 @@ python-dotenv = "^0.19.2"
 
 [tool.poetry.dev-dependencies]
 fastapi = {extras = ["all"], version = "^0.73.0"}
+black = "^22.1.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
