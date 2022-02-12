@@ -1,9 +1,9 @@
-from backend.operations.db import DatabaseConnection, MongoDBConnection
+from backend.operations.db import create_db_conn, get_chatlog
 from backend.operations.message import Message
-from fastapi import APIRouter
+from fastapi import APIRouter, Response
 
 router = APIRouter()
-DB_CONN: DatabaseConnection = MongoDBConnection()
+DB_CONN = create_db_conn()
 
 
 @router.post("/")
@@ -13,5 +13,5 @@ def save_chatlog(message: Message):
 
 
 @router.get("/")
-def get_chatlog(user: str):
-    return DB_CONN.retrieve_one("Messages", "SubmittedMessage", {"user": user})
+def get_chatlog_route(id: str, response: Response):
+    return get_chatlog(DB_CONN, id, response)
