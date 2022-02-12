@@ -9,6 +9,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+class ObjectNotFoundError(Exception):
+    pass
+
+
 class DatabaseConnection(ABC):
     @abstractmethod
     def establish_connection(self):
@@ -49,6 +53,8 @@ class MongoDBConnection(DatabaseConnection):
         retrieved_object = self._connect_to_db(schema)[table].find_one(
             {"_id": ObjectId(id)}
         )
+        if retrieved_object is None:
+            raise ObjectNotFoundError(f"Object with id {id} not found")
         retrieved_object["_id"] = str(retrieved_object.get("_id"))
         return retrieved_object
 
